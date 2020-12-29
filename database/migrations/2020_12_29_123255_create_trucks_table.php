@@ -14,7 +14,15 @@ class CreateTrucksTable extends Migration
     public function up()
     {
         Schema::create('trucks', function (Blueprint $table) {
-            $table->id();
+            //increment id
+            $table->bigIncrements('truck_id');
+            //data
+            $table->string('truck_name');
+            $table->string('description');
+            //fk
+            $table->unsignedBigInteger('category')->nullable();
+            $table->unsignedBigInteger('region')->nullable();	
+            //timestamp
             $table->timestamps();
         });
     }

@@ -14,7 +14,15 @@ class CreateRegionsTable extends Migration
     public function up()
     {
         Schema::create('regions', function (Blueprint $table) {
-            $table->id();
+            //increment id
+            $table->bigIncrements('region_id');
+            //data
+            $table->string('region_name');
+            $table->string('flag');
+            //fk
+            $table->unsignedBigInteger('category')->nullable();
+            $table->unsignedBigInteger('archive')->nullable();	
+            //timestamp
             $table->timestamps();
         });
     }

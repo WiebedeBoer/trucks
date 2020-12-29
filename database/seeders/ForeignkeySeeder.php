@@ -19,16 +19,28 @@ class ForeignkeySeeder extends Seeder
      */
     public function run()
     {
-		//regions
+        
+        //archives
+		Schema::table('archives', function (Blueprint $table) {
+            $table->foreign('category')->references('category_id')->on('archive_categories');	
+        });       
+        //hierarchy
+		Schema::table('hierarchies', function (Blueprint $table) {
+            $table->foreign('upper')->references('region_id')->on('regions');	
+            $table->foreign('lower')->references('region_id')->on('regions');
+        });      
+        //regions
 		Schema::table('regions', function (Blueprint $table) {
-            $table->foreign('archive')->references('archive_id')->on('archives');	
+            $table->foreign('archive')->references('archive_id')->on('archives');
+            $table->foreign('category')->references('category_id')->on('region_categories');	
         });
 		//objects
 		Schema::table('trucks', function (Blueprint $table) {
             $table->foreign('region')->references('region_id')->on('regions');	
+            $table->foreign('category')->references('category_id')->on('categories');
         });
-		//updates
-		Schema::table('updates', function (Blueprint $table) {
+		//photos
+		Schema::table('photos', function (Blueprint $table) {
             $table->foreign('truck')->references('truck_id')->on('trucks');	
         });
     }

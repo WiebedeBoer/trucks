@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArchivesTable extends Migration
+class CreateHierarchiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateArchivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('archives', function (Blueprint $table) {
+        Schema::create('hierarchies', function (Blueprint $table) {
             //increment id
-            $table->bigIncrements('archive_id');
-            //data
-            $table->string('archive_name');
-            $table->string('flag');
+            $table->bigIncrements('hierarchy_id');
             //fk
-			$table->unsignedBigInteger('category')->nullable();
+            $table->unsignedBigInteger('upper')->nullable();
+            $table->unsignedBigInteger('lower')->nullable();	
             //timestamp
             $table->timestamps();
         });
@@ -33,6 +31,6 @@ class CreateArchivesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archives');
+        Schema::dropIfExists('hierarchies');
     }
 }
