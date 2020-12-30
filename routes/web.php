@@ -47,13 +47,13 @@ Route::post('archive','App\Http\Controllers\ArchiveController@store');
 Route::delete('archive/{archive}', 'App\Http\Controllers\ArchiveController@destroy');
 
 //regios
-Route::get('regions', 'App\Http\Controllers\RegioController@index');
-Route::get('regions/{regions}', 'App\Http\Controllers\RegioController@show');
-Route::get('regions/{regions}/edit', 'App\Http\Controllers\RegioController@edit');
-Route::patch('regions/{regions}', 'App\Http\Controllers\RegioController@update');
-Route::post('regions/create','App\Http\Controllers\RegioController@create');
-Route::post('regions','App\Http\Controllers\RegioController@store');
-Route::delete('regions/{regions}', 'App\Http\Controllers\RegioController@destroy');
+Route::get('regions', 'App\Http\Controllers\RegionController@index');
+Route::get('regions/{regions}', 'App\Http\Controllers\RegionController@show');
+Route::get('regions/{regions}/edit', 'App\Http\Controllers\RegionController@edit');
+Route::patch('regions/{regions}', 'App\Http\Controllers\RegionController@update');
+Route::post('regions/create','App\Http\Controllers\RegionController@create');
+Route::post('regions','App\Http\Controllers\RegionController@store');
+Route::delete('regions/{regions}', 'App\Http\Controllers\RegionController@destroy');
 
 //objecten
 Route::get('objecten', 'App\Http\Controllers\TruckController@index');
